@@ -168,13 +168,14 @@
 
 /* ===================== 右侧容器及内容设置 ===================== */
 .right-content {
-  flex: 1 1 0;                 /* 右侧自适应剩余空间 */
+  flex: 1 2 0;                 /* 右侧自适应剩余空间 */
   display: flex;
-  margin-left: 200px;
+  margin-left: 100px;          /* 减小左侧边距 */
   flex-direction: column;
   align-items: flex-start;      /* 保证内容左对齐 */
   margin-top: 10px;            /* 向上移动一点 */
-  padding-right: 200px;        /* 添加右侧内边距，使按钮右移 */
+  padding-right: 500px;        /* 减小右侧内边距 */
+  min-width: 600px;            /* 添加最小宽度确保内容不会换行 */
 }
 .subtitle {
   color: #eb4603;              /* 副标题颜色（可调） */

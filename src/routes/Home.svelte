@@ -86,11 +86,12 @@
   .right-content {
     flex: 1 1 0;
     display: flex;
-    margin-left: 200px;
+    margin-left: 100px;
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
-    padding-right: 100px;
+    padding-right: 500px;
+    min-width: 600px;
   }
 
   .subtitle {
