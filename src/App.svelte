@@ -8,14 +8,26 @@
   import About from './routes/about.svelte';
   import Insight from './routes/insight.svelte';
   import Contect from './routes/contect.svelte';
-
+  import PreEduCoreCompetition from './routes/PreEduCoreCompetition.svelte';
+  import PortfolioSum from './routes/portfolioSum.svelte';
+  import TeachingCreativity from './routes/practice/teachingCreativity.svelte';
+  import DigitalInnovation from './routes/practice/digitalInnovation.svelte';
+  import RootofEducation from './routes/practice/rootofEducation.svelte';
+  import EducationalThinking from './routes/practice/educationalThinking.svelte';
+  import CollaborativeLeadership from './routes/practice/collaborativeLeadership.svelte';
+  import EducationalTrust from './routes/practice/educationalTrust.svelte';
+  import ProfessionalVitality from './routes/practice/professionalVitality.svelte';
+ 
   export let url: string = '';
+
+  // Add reactive statement to track portfolio page
+  $: isPortfolioPage = url === '/portfolio_sum';
 
   const navLinks = [
     { name: '主页', href: '/' },
-    { name: '关于我', href: '/about' },
-    { name: '作品集', href: '#' },
+    { name: '作品集', href: '/portfolio_sum' },
     { name: '随笔', href: '/insight' },
+    { name: '关于我', href: '/about' },
     { name: '联系我', href: '/contect' }
   ] as const;
 
@@ -61,8 +73,12 @@
   // 处理导航点击事件
   function navigateTo(path: string): void {
     if (path === '#') return;
-    window.history.pushState({}, '', path);
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.location.href = path; // 使用直接跳转替代 history.pushState
+  }
+
+  // 修改 "我的成果" 按钮的点击处理函数
+  function navigateToPreEduCoreCompetition() {
+    navigateTo('/portfolio_sum');
   }
 
   // 更新页面标题的函数
@@ -108,9 +124,9 @@
 </script>
 
 <Router {url}>
-  <nav class="simple-nav">
+  <nav class="simple-nav" class:portfolio-nav={isPortfolioPage}>
     <div class="nav-inner">
-      <div class="logo">在不确定的时代，⽤思辨与热爱，锚定幼⼉教育的未来</div>
+      <div class="logo" class:hide-logo={isPortfolioPage}>在不确定的时代，⽤思辨与热爱，锚定幼儿教育的未来</div>
       <div class="nav-links">
         {#each navLinks as link}
           <Link to={link.href}>{link.name}</Link>
@@ -124,14 +140,23 @@
     <Route path="/about" component={About} />
     <Route path="/insight" component={Insight} />
     <Route path="/contect" component={Contect} />
+    <Route path="/portfolio_sum" component={PortfolioSum} />
+    <Route path="/PreEduCoreCompetition" component={PreEduCoreCompetition} />
+    <Route path="/practice/teachingCreativity" component={TeachingCreativity} />
+    <Route path="/practice/digitalInnovation" component={DigitalInnovation} />
+    <Route path="/practice/rootofEducation" component={RootofEducation} />
+    <Route path="/practice/educationalThinking" component={EducationalThinking} />
+    <Route path="/practice/collaborativeLeadership" component={CollaborativeLeadership} />
+    <Route path="/practice/educationalTrust" component={EducationalTrust} />
+    <Route path="/practice/professionalVitality" component={ProfessionalVitality} />
   </main>
 </Router>
 
 <style>
 :global(body) {
   margin: 0;
-  background: #f5f5f5; /* 整体浅灰色背景 */
-  color: #222;          /* 主文字色 */
+  background: #f5f5e6; /* 米白色背景 */
+  color: #222;          /* Revert to original text color */
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -144,7 +169,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 30px; /* 向下移动 20px */
+  margin-top: 10px;
 }
 .drop-block {
   min-width: 100px;        /* 掉落动画区最小宽度（可调） */
@@ -168,14 +193,11 @@
 
 /* ===================== 右侧容器及内容设置 ===================== */
 .right-content {
-  flex: 1 2 0;                 /* 右侧自适应剩余空间 */
   display: flex;
-  margin-left: 100px;          /* 减小左侧边距 */
+  margin-left: 19000px !important;          /* 增加移动距离并添加 !important */
   flex-direction: column;
   align-items: flex-start;      /* 保证内容左对齐 */
-  margin-top: 10px;            /* 向上移动一点 */
-  padding-right: 500px;        /* 减小右侧内边距 */
-  min-width: 600px;            /* 添加最小宽度确保内容不会换行 */
+  margin-top: -10px;            /* 向上移动一点 */
 }
 .subtitle {
   color: #eb4603;              /* 副标题颜色（可调） */
@@ -220,9 +242,10 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  padding-top: 30px; /* 避免被导航栏遮挡 */
 }
 .homepage-content {
-  margin-top: 250px;            /* 距离顶部的距离（可调） */
+  margin-top: 0px;            /* 距离顶部的距离（可调） */
   margin-left: 80px;            /* 整体左侧留白（可调） */
   max-width: 1100px;            /* 最大宽度（可调） */
   display: flex;
@@ -233,13 +256,14 @@
 
 /* ===================== 导航栏设置 ===================== */
 .simple-nav {
-  width: 100%;
-  background: #f5f5f5; /* 导航栏背景色 */
-  /* 移除固定定位 */
-  /* position: fixed;
+  width: 100vw;
+  background: transparent !important;
+  min-height: 80px;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; */
+  z-index: 1000;
+  box-shadow: none;
 }
 
 .nav-inner {
@@ -248,7 +272,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 32px 30px 0 30px;
+  padding: 48px 30px 0 30px; /* 增加顶部内边距，提升导航栏高度 */
 }
 
 .logo {
@@ -256,18 +280,21 @@
   font-family: 'Noto Sans SC';
   font-weight: 500;
   letter-spacing: 2px;
-  color: #222;
-  margin-left: -100px;
+  color: #222; /* Default logo color */
+  margin-left: -30px;
+  margin-top: -30px; /* 向上移动logo字体 */
 }
 
 .nav-links {
-  color: #222;
+  color: #222; /* Default navigation link color */
   display: flex;
   gap: 2.5rem;
+  align-items: flex-start;
+  margin-top: -10px; /* 向上移动导航链接字体 */
 }
 
 :global(.nav-links a) {
-  color: #222;
+  color: #222; /* Default navigation link text color */
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
@@ -279,9 +306,21 @@
 }
 
 :global(.nav-links a:hover) {
-  color: #222;
+  color: #222; /* Default hover text color */
   text-decoration: none;
-  border-bottom-color: #EB4603; /* 悬停时下划线颜色变为 #222 */
+  border-bottom-color: #EB4603; /* 悬停时下划线颜色变为主色 */
+}
+
+/* Portfolio page navigation styles */
+.portfolio-nav {
+  background-color: transparent !important;
+}
+
+.portfolio-nav .logo,
+.portfolio-nav .nav-links,
+:global(.portfolio-nav .nav-links a),
+:global(.portfolio-nav .nav-links a:hover) {
+  color: white !important;
 }
 
 @media (max-width: 800px) {
@@ -319,8 +358,8 @@
   flex-direction: column;
   gap: 1.5em;
   align-items: flex-start;
-  margin-top: -10px;
-  margin-left: 80px;
+  margin-top: -100px;
+  margin-left: 100px;
 }
 
 .phrase {
@@ -362,7 +401,7 @@
   color: #EB4603;
   font-size: 1.8rem;
   transform: rotate(-3deg) scale(1.1) translateY(-30px);
-  background: #99C1DA;
+  background: #3498db;
   padding: 10px 24px;
   border-radius: 10px;
   min-width: 100px;
@@ -410,4 +449,9 @@
   background: #eb4603;
   color: #fff;
 }
-</style> 
+
+/* 只在作品集/灯泡页隐藏logo文字 */
+.portfolio-nav .logo.hide-logo {
+  display: none !important;
+}
+</style>

@@ -13,10 +13,7 @@ if (!target) {
 
 // 创建 Svelte 应用实例
 const app = new App({
-  target: document.getElementById('app') as HTMLElement,
-  props: {
-    url: window.location.pathname
-  }
+  target: document.getElementById('app') as HTMLElement
 });
 
 export default app;

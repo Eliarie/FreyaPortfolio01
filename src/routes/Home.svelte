@@ -56,7 +56,7 @@
   <div class="right-content">
     <div class="subtitle">学习·洞察·创⻅</div>
     <h1 class="main-title">傅她的作品集</h1>
-    <Link to="/about" class="main-btn">我的成果 →</Link>
+    <Link to="/PreEduCoreCompetition" class="main-btn">我的成果 →</Link>
   </div>
 </div>
 
@@ -86,11 +86,10 @@
   .right-content {
     flex: 1 1 0;
     display: flex;
-    margin-left: 100px;
+    margin-left: 230px;
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
-    padding-right: 500px;
     min-width: 600px;
   }
 
@@ -224,4 +223,4 @@
     filter: brightness(1.05);
     z-index: 0;
   }
-</style> 
+</style>
