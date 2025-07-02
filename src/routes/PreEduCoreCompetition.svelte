@@ -957,7 +957,7 @@
     margin-bottom: 40px;
   }
   .lamp-explanation-section {
-    margin-bottom: 0;
+    margin-bottom: 100px;
   }
   /* 让引用内容整体向右120px、向下300px移动的自定义类 */
   .moved-quote-block {

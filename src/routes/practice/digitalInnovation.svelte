@@ -1,81 +1,96 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   // 类型声明，消除 link 可选属性报错
-  type ImageItem = {
+  type PartImage = {
     src?: string;
     desc: string;
     class?: string;
     link?: string;
   };
+  type Part = {
+    title: string;
+    images: PartImage[];
+  };
+  type Section = {
+    id: string;
+    title: string;
+    content: string;
+    info: Record<string, string>;
+    parts?: Part[];
+  };
 
   const title = "数智创新力";
-  const sections = [
+  const sections: Section[] = [
     {
-      id: "concept",
-      title: "理念阐述",
-      content: "数智创新力强调运用数字技术和智能工具推动教育创新。我们相信，在数字化时代，教育需要与时俱进，充分利用技术手段提升教学效果。通过整合数字资源和智能工具，为学生提供个性化、高效的学习体验。",
+      id: "Project1",
+      title: "项目1：探究基于数字媒体的PISA绘本与幼儿阅读素养的关系",
+      content: "在实习过程中，该幼儿园利用数字媒体拓展幼儿的阅读方式，但数字媒体对幼儿阅读素养的影响尚不明确。本项目旨在探究基于数字媒体的PISA绘本与幼儿阅读素养的关系，为幼儿园提供数字媒体阅读素养的指导。",
       info: {
-        "关键词": "数字技术、智能工具、教育创新",
-        "时间": "2023年-2024年",
-        "地点": "广州、线上平台",
-        "概述内容": "以技术赋能教育，提升个性化与高效学习体验。"
+        "角色": "教育研究者",
+        "成果": "研究论文",
+        "研究类型": "量化研究",
+        "时间": "2024年9月-2024年11月",
+        "地点": "广西幼师实验幼儿园"
       },
       parts: [
         {
-          title: "智能教学平台应用",
+          title: "Part1：PISA绘本简要介绍",
           images: [
-            { src: "/src/assets/P1P1.png", desc: "智能平台界面展示", class: "img-p1p1" }
+            { src: "/src/assets/D1P1.png", desc: "PISA绘本是一套基于PISA国际评测标准建立的突破二维空间限制的具有交互性的电子绘本系统或盒子。该阅读活动以图画书为主要读本，教师通过多媒体设备组织幼儿进行听赏故事、自由阅读、亲子共读等活动，其融合了传统纸质绘本和电子绘本的形式。", class: "img-Project1" }
           ]
         },
+      
         {
-          title: "数据分析优化教学",
+          title: "Part2：研究论文展示",
           images: [
-            { desc: "通过数据分析，教师能够精准把握学生学习状况，及时调整教学策略。" }
+            { src: "/src/assets/D1P2.png", desc: "《PISA绘本与大班幼儿阅读核心素养关系分析》论文" , class: "img-Project2", link: "/src/assets/D1F1.pdf" }
           ]
         }
       ]
     },
     {
-      id: "case",
-      title: "实践案例",
-      content: "在教学中，我们运用智能教学平台进行个性化学习指导，利用数据分析优化教学策略。通过虚拟现实、增强现实等技术，创造沉浸式学习体验。同时，我们注重培养学生的数字素养，帮助他们适应数字化时代的需求。",
+      id: "Project2",
+      title: "项目2：卡通教学代理对幼儿能力的影响",
+      content: "本研究采用符合幼儿认知发展的卡通形象设计，并选用表达积极情感的教学代理视频，分析不同类型卡通教学代理（类人 vs 动物）对大班幼儿在视听关联学习和情绪体验方面的潜在差异。",
       info: {
-        "角色": "教师、学生",
-        "成果": "提升学习效率，增强数字素养",
-        "时间": "2023年-2024年",
-        "地点": "广州、线上平台",
-        "概述内容": "多元技术融合，创新教学模式。"
+        "角色": "教育研究者",
+        "成果": "研究论文",
+        "研究类型": "量化研究",
+        "时间": "2024年12月-2025年5月",
+        "地点": "珠海市某所公立幼儿园"
       },
       parts: [
         {
-          title: "虚拟现实教学体验",
+          title: "论文成果展示",
           images: [
-            { src: "/src/assets/P1P2.png", desc: "VR课堂场景", class: "img-p1p2" }
+            { src: "/src/assets/D2P1.png", desc: "《视频学习中类人与动物卡通教学代理对大班幼儿视听关联学习和情绪体验的比较研究》论文", class: "img-Project2", link: "/src/assets/D2F1.pdf" }
           ]
         },
-        {
-          title: "数字素养培养活动",
-          images: [
-            { desc: "组织学生参与编程、数据分析等数字素养提升活动。" }
-          ]
-        }
       ]
     },
     {
-      id: "result",
-      title: "实践成果",
-      content: "通过数智创新力的实践，教学效率显著提升，学习效果得到改善。学生的数字素养和创新能力得到培养，能够熟练运用数字工具解决问题。同时，教师的信息化教学能力得到提升，教育资源的利用更加高效。",
+      id: "Project3",
+      title: "项目3：在线科学探究自适应学习平台构建研究 ",
+      content: "根据中小学阶段理化课程的教学目标，整合多媒体平台资源，设计符合学习路径的在线实验活动，构建支持学生自主操作与探究的虚拟实验环境，实现理化实验教学的数字化转型与优化。",
       info: {
-        "成果": "学生数字素养提升，教师信息化能力增强",
-        "时间": "2024年",
-        "地点": "广州、线上平台",
-        "概述内容": "数智创新力助力教育高质量发展。"
+        "角色": "课程设计者",
+        "成果": "以'物体的运动'单元课程的实验设计",
+        "时间": "2023年10月-2024年6月",
+        "地点": "线上平台",
+        "概述内容": "作为课程设计组成员参与单元课程设计并在小水滴科学探究平台构建课程，并进行了课程测试和数据转换。"
       },
       parts: [
         {
-          title: "成果展示",
+          title: "Part1：课程设计",
           images: [
-            { desc: "学生和教师在数智创新力项目中的成长与收获。" }
+            { src: "/src/assets/D3P1.png", desc: "课程设计和实验操作步骤", class: "img-Project3", link: "/src/assets/D3F1.pdf"  }
+          ]
+        },
+      
+        {
+          title: "Part2：小水滴平台展示-学生端",
+          images: [
+            { src: "/src/assets/D3P2.png", desc: "小水滴平台内容概览" , class: "img-Project3", link: "/src/assets/D3V1.MP4" }
           ]
         }
       ]
@@ -181,7 +196,7 @@
   </div>
   <div class="simple-quote">
     <span class="simple-quote-text">
-      数智创新力是教师和学生在数字时代灵活运用技术、不断创新、提升学习与教学效率的关键能力。
+      数智创新力是教师和学生在数字时代灵活运用技术、不断创新、提升学习与教学效率的关键能力，这个模块主要涉及教师整合数字资源和智能工具和课程设计以及检验融入数字技术的教学效果。
     </span>
   </div>
   <div class="content">
@@ -207,7 +222,9 @@
                       {#each part.images as img, i}
                         {#if 'src' in img}
                           <div class="part-image-block">
-                            {#if 'link' in img && typeof img.link === 'string' && img.link}
+                            {#if img.src && img.src.endsWith('.mp4')}
+                              <video src={img.src} controls class={img.class} style="max-width:700px;max-height:400px;display:block;"></video>
+                            {:else if 'link' in img && typeof img.link === 'string' && img.link}
                               <a href={img.link} target="_blank" class="image-link">
                                 <img src={img.src} alt="部分图片" class={img.class} />
                               </a>
@@ -248,6 +265,38 @@
   --sidebar-link-hover: #b3a1e6;
   --sidebar-text: #232946;
   --practice-max-width: 1000px;
+  --en-num-font: 'Times New Roman', Times, serif;
+}
+
+body, .practice-detail, .section, .img-desc, .project-info, .project-description {
+  font-family: inherit;
+}
+
+/* 只针对英文和数字字符设置字体 */
+*:not(code):not(pre) {
+  font-family: inherit;
+}
+
+/* 利用 unicode-range 选择器，给所有数字和英文字符设置 Times New Roman 字体 */
+@font-face {
+  font-family: 'Times New Roman';
+  src: local('Times New Roman'), local('Times'), serif;
+  unicode-range: U+0030-0039, U+0041-005A, U+0061-007A;
+}
+
+/* 选择所有数字和英文字符，强制字体 */
+.en-num-font {
+  font-family: var(--en-num-font) !important;
+}
+
+/* 自动为所有数字和英文加上字体（通过选择器） */
+body :not(code):not(pre) {
+  font-feature-settings: "lnum";
+}
+
+/* 通过伪类选择所有数字和英文字符 */
+body :not(code):not(pre) {
+  unicode-bidi: isolate;
 }
 
 .sidebar-float {
@@ -418,12 +467,12 @@
 
 .back-top-nav {
   position: fixed;
-  left: 20px;
+  left: 50px;
   top: 20px;
   z-index: 1000;
   margin-bottom: 0;
 }
-  .back-link {
+.back-link {
   font-size: 2.2rem;
   font-weight: bold;
   color: #222;
@@ -432,11 +481,11 @@
   width: 2.8rem;
   height: 2.8rem;
   display: flex;
-    align-items: center;
+  align-items: center;
   justify-content: center;
   text-align: center;
   line-height: 1;
-    text-decoration: none;
+  text-decoration: none;
   box-shadow: 0 2px 8px rgba(44,62,80,0.08);
   border: 1.5px solid #705cc7;
   transition: 
@@ -530,7 +579,7 @@
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 3rem;
 }
 .part-row {
   display: flex;
@@ -550,56 +599,47 @@
   color: #705cc7;
 }
 .part-images-row {
-  display: block;
+  display: flex;
+  align-items: flex-end;
   width: 100%;
-  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
-/* === AI调整：图片容器和图片样式优化 === */
 .part-image-block {
   display: flex;
-  align-items: flex-end; /* 底部对齐 */
-  gap: 10px; /* 图片和描述之间的间距 */
-  width: auto; /* 根据内容自动调整宽度 */
-  max-width: none; /* 移除最大宽度限制 */
-  margin-bottom: 30px; /* 增加图片块之间的垂直间距 */
-}
-
-.part-image-block:last-child {
-  margin-bottom: 0; /* 最后一个图片块不需要底部边距 */
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  gap: 18px;
 }
 
 .part-image-block img {
-  width: auto; /* 根据原图尺寸自动调整 */
-  height: auto; /* 根据原图尺寸自动调整 */
-  max-width: 700px; /* 最大宽度限制，防止过大 */
-  max-height: 400px; /* 最大高度限制，防止过大 */
-  aspect-ratio: auto; /* 保持原图比例 */
-  object-fit: contain; /* 显示完整图片不裁剪 */
-  object-position: center; /* 图片内容居中 */
-  border-radius: 0px;
-  box-shadow: 0 2px 8px #0001;
   display: block;
-  flex-shrink: 0; /* 防止图片被压缩 */
-  margin: 10px 10px; /* 重置边距 */
+  max-width: 700px;
+  height: auto;
+  box-shadow: 0 2px 8px #0001;
+  border-radius: 0;
+  margin: 0;
 }
 
-
 .img-desc {
+  align-self: flex-end;
+  max-width: 400px;
+  word-break: break-all;
   font-size: 0.98rem;
   color: #666;
-  text-align: left; /* 左对齐 */
-  align-self: flex-end; /* 确保描述与图片底端对齐 */
-  max-width: auto; /* 描述最大宽度 */
-  word-break: break-all;
+  text-align: left;
   font-weight: 500;
   padding: 8px;
   background: rgba(255,255,255,0.9);
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   border-left: 3px solid #705cc7;
-  margin: 0; /* 重置边距 */
-  margin-bottom: 0px; /* 确保底部对齐 */
+  margin: 0;
 }
 
 @media (max-width: 900px) {
@@ -615,12 +655,12 @@
 
 /* ================== 针对每张图片的自定义样式 ================== */
 /* 第一部分第一张图片专属样式 */
-.img-p1p1 {
+.img-Project1 {
   border: 0px solid #705cc7;
   /* 可自定义更多样式 */
 }
 /* 第一部分第二张图片专属样式 */
-.img-p1p2 {
+.img-Project2 {
   width:600px !important;
   /* 移除了 filter: grayscale(1); 让悬停效果颜色一致 */
   /* 可自定义更多样式 */
@@ -701,21 +741,21 @@
 }
 
 /* 为可点击的图片添加视觉提示 - 统一所有有链接的图片样式 */
-.img-p1p1, .img-p1p2 {
+.img-Project1, .img-Project2 {
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
 }
 
-.img-p1p1:hover, .img-p1p2:hover {
+.img-Project1:hover, .img-Project2:hover {
   transform: scale(1.0);
   box-shadow: 0 4px 16px rgba(112,92,199,0.2);
 }
 
 /* 为可点击图片添加点击提示 - 针对直接图片 */
-.img-p1p1::after, .img-p1p2::after {
+.img-Project1::after, .img-Project2::after {
   content: "点击查看原文档";
-    position: absolute;
+  position: absolute;
   top: 10px;
   right: 10px;
   background: #705cc7;
@@ -727,10 +767,10 @@
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
-    z-index: 10;
-  }
+  z-index: 10;
+}
 
-.img-p1p1:hover::after, .img-p1p2:hover::after {
+.img-Project1:hover::after, .img-Project2:hover::after {
   opacity: 1;
 }
 /* === END 图片链接样式 === */
@@ -794,4 +834,5 @@
   margin-top: 80px !important;
   transition: margin-top 0.4s cubic-bezier(.4,2,.6,1);
 }
-</style> 
+
+</style>

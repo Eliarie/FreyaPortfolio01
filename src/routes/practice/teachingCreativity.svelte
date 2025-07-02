@@ -25,8 +25,8 @@
         {
           title: "第一部分：教案和课件设计，突出数模式与民族文化的结合。",
           images: [
-            { src: "/src/assets/P1P1.png", desc: "课件展示：传统文化与数模式", class: "img-p1p1", link: "/src/assets/P1P2.pdf" },
-            { src: "/src/assets/P1P2.png", desc: "教案展示：传统文化与数模式", class: "img-p1p2", link: "/src/assets/P1P1.pdf" }
+            { src: "/src/assets/P1P1.png", desc: "课件展示：传统文化与数模式", class: "img-p1p1", link: "/src/assets/P1P1.pdf" },
+            { src: "/src/assets/P1P2.png", desc: "教案展示：传统文化与数模式", class: "img-p1p2", link: "/src/assets/P1P2.pdf" }
           ]
         },
         {
@@ -57,36 +57,19 @@
         {
           title: "第一部分：前期了解",
           images: [
-            { src: "/src/assets/P1P1.png", desc: "课件展示：传统文化与数模式", class: "img-p1p1", link: "/src/assets/P1P1.pdf" },
-            { src: "/src/assets/P1P2.png", desc: "教案展示：传统文化与数模式", class: "img-p1p2", link: "/src/assets/P1P2.pdf" }
+            { src: "/src/assets/P2P1.jpg", desc: "学生兴趣调查", class: "img-P2P1"},
+            { src: "/src/assets/P2P2.jpg", desc: "当地党员访谈", class: "img-P2P2" }
             ]
         },
         {
           title: "第二部分：活动实施",
           images: [
-            { desc: "课程设计与开展，电影美育活动现场，师生互动。" }
-          ]
+            { src: "/src/assets/P2P3.jpg", desc: "电影+绘画艺术课堂", class: "img-P2P3"},
+            { src: "/src/assets/P2P4.jpg", desc: "教师与学生欣赏电影", class: "img-P2P4" }
+            ]
         },
-        {
-          title: "第三部分：后期反馈",
-          images: [
-            { desc: "活动总结、学生反馈、公益纪录片片段等。" }
-          ]
-        }
       ]
     },
-    {
-      id: "result",
-      title: "实践成果",
-      content: "学生在创生性教学中表现出更高的学习积极性和创新能力，能够独立思考并提出新颖的见解，教师也在实践中不断成长。",
-      info: {
-        "成果": "三等奖",
-        "时间": "2024年7月",
-        "地点": "广州",
-        "概述内容": "学生成长显著。"
-      },
-      image: ""
-    }
   ];
 
   let expanded = false;
@@ -491,7 +474,7 @@ h2 {
   background: #eb4503b8;
   border-radius: 0.7rem;
   padding: 1.1rem 1.3rem;
-  margin: 1.2rem 0 1.8rem 0;
+  margin: 0rem 0 0rem 0;
   box-shadow: 0 1px 4px #eb460305;
 }
 @media (max-width: 700px) {
@@ -504,7 +487,7 @@ h2 {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 3rem;
 }
 .part-row {
   display: flex;
@@ -532,39 +515,33 @@ h2 {
 /* === AI调整：图片容器和图片样式优化 === */
 .part-image-block {
   display: flex;
-  align-items: flex-end; /* 底部对齐 */
-  gap: 10px; /* 图片和描述之间的间距 */
-  width: auto; /* 根据内容自动调整宽度 */
-  max-width: none; /* 移除最大宽度限制 */
-  margin-bottom: 30px; /* 增加图片块之间的垂直间距 */
-}
-
-.part-image-block:last-child {
-  margin-bottom: 0; /* 最后一个图片块不需要底部边距 */
+  align-items: flex-end; /* 保证底部对齐 */
+  gap: 10px;
+  margin-bottom: 30px;
 }
 
 .part-image-block img {
-  width: auto; /* 根据原图尺寸自动调整 */
-  height: auto; /* 根据原图尺寸自动调整 */
-  max-width: 700px; /* 最大宽度限制，防止过大 */
-  max-height: 400px; /* 最大高度限制，防止过大 */
-  aspect-ratio: auto; /* 保持原图比例 */
-  object-fit: contain; /* 显示完整图片不裁剪 */
-  object-position: center; /* 图片内容居中 */
-  border-radius: 0px;
-  box-shadow: 0 2px 8px #0001;
   display: block;
-  flex-shrink: 0; /* 防止图片被压缩 */
-  margin: 10px 10px; /* 重置边距 */
+  margin: 0;
+  padding: 0;
+  max-width: 700px;
+  max-height: 400px;
+  object-fit: contain;
+  object-position: center;
+  box-shadow: 0 2px 8px #0001;
+  border-radius: 0px;
+  flex-shrink: 0;
 }
 
-
 .img-desc {
+  display: flex;
+  align-items: center;      /* 垂直居中 */
+  justify-content: flex-start;
+  text-align: left;
+  line-height: 1;           /* 让字体基线居中 */
   font-size: 0.98rem;
   color: #666;
-  text-align: left; /* 左对齐 */
-  align-self: flex-end; /* 确保描述与图片底端对齐 */
-  max-width: auto; /* 描述最大宽度 */
+  max-width: auto;
   word-break: break-all;
   font-weight: 500;
   padding: 8px;
@@ -572,8 +549,9 @@ h2 {
   border-radius: 6px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   border-left: 3px solid #eb4603;
-  margin: 0; /* 重置边距 */
-  margin-bottom: 0px; /* 确保底部对齐 */
+  margin: 0;
+  margin-bottom: 0;
+  padding-bottom: 6px;
 }
 
 @media (max-width: 900px) {
@@ -765,7 +743,7 @@ h2 {
 }
 
 .section.section-scrolled {
-  margin-top: 80px !important;
-  transition: margin-top 0.4s cubic-bezier(.4,2,.6,1);
+  /* margin-top: 80px !important; */
+  /* transition: margin-top 0.4s cubic-bezier(.4,2,.6,1); */
 }
 </style> 
