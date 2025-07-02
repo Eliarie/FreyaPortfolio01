@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  // 类型声明，消除 link 可选属性报错
   type PartImage = {
     src?: string;
     desc: string;
